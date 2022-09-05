@@ -1,6 +1,7 @@
 package principal;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import modelo.Pessoa;
 
@@ -8,44 +9,56 @@ public class PessoaMain {
 
 	public static void main(String[] args) {
 
+		Scanner scan = new Scanner(System.in);
+
 		ArrayList<Pessoa> listaPessoas = new ArrayList<>();
 
-		Pessoa p1 = new Pessoa();
-		p1.setNome("Eduardo");
-		p1.setCpf("09992211911");
-		p1.setIdade(20);
-		listaPessoas.add(p1);
+		int opc = 0;
 
-		Pessoa p2 = new Pessoa();
-		p2.setNome("Jessica");
-		p2.setCpf("00000000000");
-		p2.setIdade(19);
-		listaPessoas.add(p2);
+		do {
+			System.out.println("##ESCOLHA UMA OPÇÃO##\n");
+			System.out.println("0 - Sair");
+			System.out.println("1 - Cadastrar");
+			System.out.println("2 - Atualizar");
+			System.out.println("3 - Listar \n");
+			System.out.println("Digite uma opção: ");
+			opc = scan.nextInt();
 
-		Pessoa p3 = new Pessoa();
-		p3.setNome("Maria");
-		p3.setCpf("00000000000");
-		p3.setIdade(26);
-		listaPessoas.add(p3);
+			switch (opc) {
 
-		Pessoa p4 = new Pessoa();
-		p4.setNome("Adriana");
-		p4.setCpf("58013890910");
-		p4.setIdade(58);
-		listaPessoas.add(p4);
+			case 1:
 
-		Pessoa p5 = new Pessoa();
-		p5.setNome("Carlos");
-		p5.setCpf("00000000000");
-		p5.setIdade(15);
-		listaPessoas.add(p5);
+				 Pessoa pessoa = new Pessoa (nome, idade, cpf);
 
-		for (Pessoa pessoa : listaPessoas) {
-			System.out.println(pessoa.getNome());
-			System.out.println(pessoa.getCpf());
-			System.out.println(pessoa.getIdade());
+				System.out.println("Cadastro\n");
 
-		}
+				System.out.println("Nome: ");
+				String nome = scan.nextLine();
+
+				System.out.println("Idade: ");
+				int idade = scan.nextInt();
+
+				System.out.println("CPF: ");
+				String cpf = scan.nextLine();
+
+			case 2:
+				System.out.println("Atualizar");
+
+			case 3:
+				System.out.println("Listar");
+				
+				for (Pessoa p1 : listaPessoas) {
+					System.out.println(p1.getNome());
+					System.out.println(p1.getCpf());
+					System.out.println(p1.getIdade());
+
+			default:
+
+				System.out.println("Opção inválida");
+
+			}
+		} while (opc == 0);
+		System.out.println("Encerrando...");
 	}
 
 }
